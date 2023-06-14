@@ -1,6 +1,8 @@
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment } from "react";
 
+// delete modal
+
 const DeleteModal = ({ handleDelete, closeModal, isOpen, taskId }) => {
   return (
     <Transition appear show={isOpen} as={Fragment}>
