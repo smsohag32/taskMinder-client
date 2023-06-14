@@ -10,6 +10,8 @@ const StatusModal = ({
 }) => {
   const [status, setStatus] = useState("");
 
+  //   selection value sent to alltask page
+
   const handleSelectedOption = (e) => {
     e.preventDefault();
     handleStatusUpdate(status, taskId);

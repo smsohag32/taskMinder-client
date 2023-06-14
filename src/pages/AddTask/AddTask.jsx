@@ -32,7 +32,7 @@ const AddTask = () => {
     };
     // post to db
     axios
-      .post("http://localhost:5000/task/add", newTask)
+      .post("https://task-minder-server.vercel.app/task/add", newTask)
       .then((res) => {
         if (res?.data?.insertedId) {
           toast.success(`New task ${task_title} added`);

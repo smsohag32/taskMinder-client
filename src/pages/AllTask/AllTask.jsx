@@ -28,7 +28,9 @@ const AllTask = () => {
   } = useQuery({
     queryKey: ["task"],
     queryFn: async () => {
-      const res = await axios.get(`http://localhost:5000/task/all`);
+      const res = await axios.get(
+        `https://task-minder-server.vercel.app/task/all`
+      );
       return res.data;
     },
   });
@@ -37,7 +39,6 @@ const AllTask = () => {
   const handleEdit = (event) => {
     event.preventDefault();
     setLoading(true);
-    console.log("c");
 
     const task_id = event.target.task_id.value;
     const task_title = event.target.task_title.value;
@@ -48,9 +49,11 @@ const AllTask = () => {
       task_description,
     };
     axios
-      .put(`http://localhost:5000/task/update/${task_id}`, editedTask)
+      .put(
+        `https://task-minder-server.vercel.app/task/update/${task_id}`,
+        editedTask
+      )
       .then((res) => {
-        console.log(res);
         if (res?.data?.modifiedCount > 0) {
           toast.success("Update the task Information");
           refetch();
@@ -60,13 +63,12 @@ const AllTask = () => {
       })
       .catch((err) => {
         setLoading(false);
-        console.log(err);
       });
   };
   // handle to delete
   const handleDelete = (id) => {
     axios
-      .delete(`http://localhost:5000/task/${id}`)
+      .delete(`https://task-minder-server.vercel.app/task/${id}`)
       .then((res) => {
         if (res?.data?.deletedCount > 0) {
           closeModal();
@@ -74,9 +76,7 @@ const AllTask = () => {
           refetch();
         }
       })
-      .catch((err) => {
-        console.log(err);
-      });
+      .catch((err) => {});
   };
 
   // handle to status update
@@ -84,7 +84,9 @@ const AllTask = () => {
   const handleStatusUpdate = (status, taskId) => {
     setLoading(true);
     axios
-      .patch(`http://localhost:5000/task/status/${taskId}`, { status })
+      .patch(`https://task-minder-server.vercel.app/task/status/${taskId}`, {
+        status,
+      })
       .then((res) => {
         if (res?.data?.modifiedCount > 0) {
           toast.success("Status Update Success");
