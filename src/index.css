@@ -3,6 +3,20 @@
 @tailwind utilities;
 
 
-.default-container{
-  @apply max-w-[2520px] mx-auto xl:px-20 md:px-10 sm:px-2 px-4
+/* google font */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+html {
+  font-family: 'Poppins', sans-serif;
 }
+
+/* custom css class */
+
+.default-container{
+  @apply max-w-[2520px] mx-auto xl:px-20 md:px-10 sm:px-5 px-6
+}
+.text-primary{
+  @apply text-blue-500
+}
+
